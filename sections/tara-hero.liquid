@@ -1,0 +1,550 @@
+{% comment %} TARA — Hero Section | Shopify Horizon Theme {% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .tara-hero-section {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    background: #ffffff;
+    width: 100%;
+  }
+
+  /* ANNOUNCEMENT BAR */
+  .tara-ann-bar {
+    background: {{ section.settings.primary_color }};
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 8px 16px;
+  }
+
+  /* HERO BODY */
+  .tara-hero-body {
+    padding: 36px 20px 28px;
+    text-align: center;
+    background: #fff;
+  }
+  .tara-hero-tag {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .tara-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .tara-hero-title em {
+    color: {{ section.settings.primary_color }};
+    font-style: italic;
+  }
+  .tara-hero-sub {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* PRODUCT CARD */
+  .tara-hero-card {
+    background: #f8faff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tara-hc-img {
+    background: #e8f0fe;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .tara-hc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .tara-badge-discount {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: {{ section.settings.cta_color }};
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    animation: tara-pulse 2s infinite;
+  }
+  .tara-badge-new {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: {{ section.settings.primary_color }};
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  @keyframes tara-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+  .tara-hc-body {
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tara-hc-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .tara-hc-stars {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 3px;
+  }
+  .tara-hc-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ section.settings.primary_color }};
+    text-align: center;
+  }
+  .tara-hc-old {
+    font-size: 12px;
+    color: #94a3b8;
+    text-decoration: line-through;
+    display: block;
+    text-align: center;
+  }
+
+  /* CTA BUTTONS */
+  .tara-cta-primary {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 12px;
+    background: {{ section.settings.cta_color }};
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .tara-cta-primary:hover {
+    background: #dc2626;
+    transform: scale(1.02);
+    color: #fff;
+  }
+  .tara-cta-ghost {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    background: transparent;
+    color: {{ section.settings.primary_color }};
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1.5px solid #bfdbfe;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .tara-cta-ghost:hover {
+    background: #eff6ff;
+    color: {{ section.settings.primary_color }};
+  }
+
+  /* TRUST STRIP */
+  .tara-trust {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 20px;
+    background: #f8faff;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 8px;
+  }
+  @media (min-width: 768px) {
+    .tara-trust { grid-template-columns: repeat(4, 1fr); }
+    .tara-hero-body { padding: 48px 40px 36px; }
+    .tara-hero-title { font-size: 42px; }
+    .tara-cta-primary, .tara-cta-ghost { max-width: 360px; }
+  }
+  .tara-trust-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+  .tara-trust-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tara-trust-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .tara-trust-sub {
+    font-size: 10px;
+    color: #64748b;
+    margin-top: 1px;
+  }
+</style>
+
+<section class="tara-hero-section">
+
+  {%- if section.settings.show_announcement -%}
+  <div class="tara-ann-bar">
+    {{ section.settings.announcement_text }}
+  </div>
+  {%- endif -%}
+
+  <div class="tara-hero-body">
+
+    <div class="tara-hero-tag">{{ section.settings.hero_tag }}</div>
+
+    <h1 class="tara-hero-title">
+      {{ section.settings.hero_title_line1 }}<br>
+      <em>{{ section.settings.hero_title_em }}</em>
+    </h1>
+
+    <p class="tara-hero-sub">{{ section.settings.hero_subtitle }}</p>
+
+    <div class="tara-hero-card">
+      <div class="tara-hc-img">
+        {%- if section.settings.hero_product != blank -%}
+          {%- assign hero_prod = all_products[section.settings.hero_product] -%}
+          <img src="{{ hero_prod.featured_image | img_url: '600x' }}" alt="{{ hero_prod.title }}">
+          {%- if section.settings.badge_discount != blank -%}
+            <div class="tara-badge-discount">{{ section.settings.badge_discount }}</div>
+          {%- endif -%}
+          {%- if section.settings.badge_new != blank -%}
+            <div class="tara-badge-new">{{ section.settings.badge_new }}</div>
+          {%- endif -%}
+        {%- else -%}
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="20" width="60" height="45" rx="6" fill="#bfdbfe"/><rect x="20" y="10" width="40" height="15" rx="4" fill="#93c5fd"/><circle cx="40" cy="55" r="8" fill="#1d4ed8"/></svg>
+          {%- if section.settings.badge_discount != blank -%}
+            <div class="tara-badge-discount">{{ section.settings.badge_discount }}</div>
+          {%- endif -%}
+          {%- if section.settings.badge_new != blank -%}
+            <div class="tara-badge-new">{{ section.settings.badge_new }}</div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+      <div class="tara-hc-body">
+        <div>
+          {%- if section.settings.hero_product != blank -%}
+            <div class="tara-hc-name">{{ hero_prod.title }}</div>
+          {%- else -%}
+            <div class="tara-hc-name">{{ section.settings.hero_product_name }}</div>
+          {%- endif -%}
+          <div class="tara-hc-stars">⭐ {{ section.settings.hero_rating }} — {{ section.settings.hero_reviews_count }} تقييم</div>
+        </div>
+        <div>
+          {%- if section.settings.hero_product != blank -%}
+            <div class="tara-hc-price">{{ hero_prod.price | money }}</div>
+            {%- if hero_prod.compare_at_price > hero_prod.price -%}
+              <div class="tara-hc-old">{{ hero_prod.compare_at_price | money }}</div>
+            {%- endif -%}
+          {%- else -%}
+            <div class="tara-hc-price">{{ section.settings.hero_price }}</div>
+            <div class="tara-hc-old">{{ section.settings.hero_old_price }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <a href="{{ section.settings.cta_link }}" class="tara-cta-primary">
+      {{ section.settings.cta_text }}
+    </a>
+    <a href="{{ section.settings.ghost_link }}" class="tara-cta-ghost">
+      {{ section.settings.ghost_text }}
+    </a>
+
+  </div>
+
+  <div class="tara-trust">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'trust_item' -%}
+      <div class="tara-trust-item" {{ block.shopify_attributes }}>
+        <div class="tara-trust-icon" style="background: {{ block.settings.icon_bg }};">
+          {{ block.settings.icon_svg }}
+        </div>
+        <div class="tara-trust-label">{{ block.settings.label }}</div>
+        <div class="tara-trust-sub">{{ block.settings.sublabel }}</div>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Tara — Hero",
+  "tag": "section",
+  "class": "tara-hero-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "🎨 الألوان"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "اللون الأساسي (أزرق)",
+      "default": "#1d4ed8"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "لون زر CTA (أحمر)",
+      "default": "#ef4444"
+    },
+    {
+      "type": "header",
+      "content": "📢 الشريط الإعلاني"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "إظهار الشريط الإعلاني",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "نص الشريط",
+      "default": "✦ توصيل مجاني في المغرب ✦ الدفع عند الاستلام ✦"
+    },
+    {
+      "type": "header",
+      "content": "🦸 الـ Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_tag",
+      "label": "التاغ الصغير",
+      "default": "✦ عرض محدود — 2025"
+    },
+    {
+      "type": "text",
+      "id": "hero_title_line1",
+      "label": "السطر الأول من العنوان",
+      "default": "منتجات"
+    },
+    {
+      "type": "text",
+      "id": "hero_title_em",
+      "label": "الكلمة المميزة (italic)",
+      "default": "تستاهل الفرق"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "الوصف تحت العنوان",
+      "default": "جودة حقيقية، دفع عند الاستلام، توصيل لجميع مدن المغرب"
+    },
+    {
+      "type": "header",
+      "content": "🛍️ المنتج المميز"
+    },
+    {
+      "type": "product",
+      "id": "hero_product",
+      "label": "اختر منتج (اختياري)"
+    },
+    {
+      "type": "text",
+      "id": "hero_product_name",
+      "label": "اسم المنتج (إذا ما اخترتيش)",
+      "default": "المنتج المميز"
+    },
+    {
+      "type": "text",
+      "id": "hero_price",
+      "label": "السعر",
+      "default": "349 درهم"
+    },
+    {
+      "type": "text",
+      "id": "hero_old_price",
+      "label": "السعر القديم",
+      "default": "499 درهم"
+    },
+    {
+      "type": "text",
+      "id": "hero_rating",
+      "label": "التقييم",
+      "default": "4.9"
+    },
+    {
+      "type": "text",
+      "id": "hero_reviews_count",
+      "label": "عدد التقييمات",
+      "default": "342"
+    },
+    {
+      "type": "text",
+      "id": "badge_discount",
+      "label": "بادج التخفيض",
+      "default": "-30%"
+    },
+    {
+      "type": "text",
+      "id": "badge_new",
+      "label": "بادج جديد",
+      "default": "جديد"
+    },
+    {
+      "type": "header",
+      "content": "🔴 أزرار CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "نص الزر الرئيسي",
+      "default": "اطلب الآن — الدفع عند الاستلام"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "رابط الزر الرئيسي"
+    },
+    {
+      "type": "text",
+      "id": "ghost_text",
+      "label": "نص الزر الثاني",
+      "default": "شوف جميع المنتجات ←"
+    },
+    {
+      "type": "url",
+      "id": "ghost_link",
+      "label": "رابط الزر الثاني"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "العنوان",
+          "default": "جودة مضمونة"
+        },
+        {
+          "type": "text",
+          "id": "sublabel",
+          "label": "الوصف",
+          "default": "منتجات مختارة بعناية"
+        },
+        {
+          "type": "color",
+          "id": "icon_bg",
+          "label": "لون الخلفية",
+          "default": "#dbeafe"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "SVG الأيقونة",
+          "default": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='#1d4ed8'/></svg>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tara — Hero",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "label": "جودة مضمونة",
+            "sublabel": "منتجات مختارة بعناية",
+            "icon_bg": "#dbeafe",
+            "icon_svg": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' fill='#1d4ed8'/></svg>"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "label": "الدفع عند الاستلام",
+            "sublabel": "100% آمن",
+            "icon_bg": "#fee2e2",
+            "icon_svg": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none'><rect x='2' y='6' width='20' height='14' rx='2' fill='#ef4444'/><path d='M2 10h20' stroke='#fff' stroke-width='1.5'/><circle cx='7' cy='15' r='1.5' fill='#fff'/></svg>"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "label": "توصيل سريع",
+            "sublabel": "2–4 أيام",
+            "icon_bg": "#dcfce7",
+            "icon_svg": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none'><path d='M5 12h14M12 5l7 7-7 7' stroke='#16a34a' stroke-width='2' stroke-linecap='round'/></svg>"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "label": "+5000 زبون",
+            "sublabel": "تقييم 4.8 / 5",
+            "icon_bg": "#fef9c3",
+            "icon_svg": "<svg width='20' height='20' viewBox='0 0 24 24' fill='none'><path d='M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z' fill='#eab308'/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
