@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "tara-hero": {
+      "type": "tara-hero",
+      "disabled": false,
+      "settings": {}
+    }
+  },
+  "order": ["tara-hero"]
+}
